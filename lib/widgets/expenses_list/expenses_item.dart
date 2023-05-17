@@ -15,40 +15,47 @@ class ExpensesItem extends StatelessWidget {
     return Card(
       child: Container(
         margin: const EdgeInsets.symmetric(
-          vertical: 10,
+          vertical: 15,
           horizontal: 15,
         ),
         child: Row(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  expense.title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+            Expanded(
+              child: Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        expense.title,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        expense.formattedDate,
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  '\$${expense.amount.toStringAsFixed(2)}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Icon(expense.categoryIcon),
+                      const SizedBox(width: 5),
+                      Text(
+                        '\$${expense.amount.toStringAsFixed(2)}',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 5),
-                Text(expense.categoryName),
-                Icon(expense.categoryIcon),
-                const SizedBox(height: 5),
-                Text(
-                  expense.formattedDate,
-                  style: const TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
+                ],
+              ),
             )
           ],
         ),
